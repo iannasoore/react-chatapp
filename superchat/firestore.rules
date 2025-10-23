@@ -1,0 +1,16 @@
+// Development Firestore rules: allow authenticated users to read and write messages
+// WARNING: These rules are permissive and should NOT be used in production.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // allow authenticated users to read/write documents in the messages collection
+    match /messages/{messageId} {
+      allow read: if true; // allow reads for everyone (adjust as needed)
+      allow create: if request.auth != null &&
+                    request.resource.data.keys().hasAll(['text','createdAt','uid']) &&
+                    request.resource.data.text is string &&
+                    request.resource.data.uid == request.auth.uid;
+      allow update, delete: if false; // disallow edits/deletes in dev (or change as needed)
+    }
+  }
+}
