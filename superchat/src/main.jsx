@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import './App.css';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import 'firebase/compat/auth';          
+import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
@@ -119,6 +121,17 @@ function ChatMessage(props) {
       <img src={photoURL} alt="avatar" />
       <p>{text}</p>
     </div>
+  );
+}
+
+// Mount the app when this file is loaded by Vite's index.html
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   );
 }
 
