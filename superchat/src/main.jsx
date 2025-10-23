@@ -60,7 +60,7 @@ function App() {
             </nav>
             {user ? <SignOut /> : null}
           </div>
-        </header>
+        </header >
 
         <section>
           <Routes>
