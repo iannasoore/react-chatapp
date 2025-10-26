@@ -4,7 +4,6 @@ import { getFirestore } from 'firebase/firestore';
 import 'firebase/firestore';
 import './App.css';
 
-
   // Your Firebase configuration goes here
   // Get these values from your Firebase Console
  const firebaseConfig = {

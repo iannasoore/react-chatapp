@@ -1,0 +1,19 @@
+{
+  "firestore": {
+    "rules": "superchat/firestore.rules"
+  },
+  "hosting": {
+    "public": "superchat/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
